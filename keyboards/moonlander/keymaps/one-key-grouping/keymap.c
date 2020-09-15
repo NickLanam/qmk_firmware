@@ -33,6 +33,19 @@
 #define LSA_T(kc) MT(MOD_LSFT | MOD_LALT, kc)
 #define BP_NDSH_MAC ALGR(KC_8)
 
+/*
+ * Hardware notes:
+ * The Moonlander is powered by a Cortex-M4, in the [STM32F303](https://www.st.com/en/microcontrollers-microprocessors/stm32f303.html) family.
+ * - TODO: Which one specifically? ZSA probably published that information; the Moonlander is based heavily on the open source Ergodox design.
+ * Its RGB matrix uses an [IS31FL3731](http://www.issi.com/WW/pdf/31FL3731.pdf) Audio Modulated Matrix LED Driver.
+ */
+enum layer_names {
+  LAYER_BASE = 0,
+  LAYER_LOWER,
+  LAYER_RAISE,
+  LAYER_ADJUST
+};
+
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
   ST_MACRO_0,
@@ -77,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                                      │Spc│ { │ < │      │ > │ } │Spc│
    *                                      └───┴───┴───┘      └───┴───┴───┘
    */
-  [0] = LAYOUT_moonlander(
+  [LAYER_BASE] = LAYOUT_moonlander(
     KC_TAB,         KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_F6,                          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_PSCREEN,
     KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_GRAVE,                       KC_QUOTE,       KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSPACE,
     KC_ESCAPE,      KC_A,           KC_S,           KC_D,           KC_F,           KC_G,           KC_TILD,                        LSFT(KC_QUOTE), KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      KC_ENTER,
@@ -105,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                                      │   │   │   │      │   │   │   │
    *                                      └───┴───┴───┘      └───┴───┴───┘
    */
-  [1] = LAYOUT_moonlander(
+  [LAYER_LOWER] = LAYOUT_moonlander(
     _______,        KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_6,                           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,       KC_EQUAL,       KC_INSERT,
     _______,        _______,        KC_MS_U,        _______,        _______,        KC_ACL0,        _______,                        TG(2),          KC_BTN1,        KC_BTN3,        KC_BTN2,        ST_MACRO_0,     ST_MACRO_1,     KC_DELETE,
     KC_CAPSLOCK,    KC_MS_L,        KC_MS_D,        KC_MS_R,        _______,        KC_ACL1,        _______,                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
@@ -133,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                                      │   │   │   │      │   │   │   │
    *                                      └───┴───┴───┘      └───┴───┴───┘
    */
-  [2] = LAYOUT_moonlander(
+  [LAYER_RAISE] = LAYOUT_moonlander(
     _______,        KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,              _______,        _______,        _______,        KC_KP_SLASH,    KC_KP_ASTERISK, KC_KP_MINUS,    KC_PAUSE,
     _______,        KC_PERC,        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,        _______,        _______,        KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_KP_PLUS,     KC_DELETE,
     KC_CAPSLOCK,    KC_MINUS,       KC_UNDS,        KC_EQUAL,       KC_PLUS,        KC_AUDIO_MUTE,  KC_MEDIA_PLAY_PAUSE,            _______,        _______,        KC_KP_4,        KC_KP_5,        KC_KP_6,        KC_KP_ENTER,    _______,
@@ -161,7 +174,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                                      │   │Rc1│Stp│      │Stp│Rc2│   │
    *                                      └───┴───┴───┘      └───┴───┴───┘
    */
-  [3] = LAYOUT_moonlander(
+  [LAYER_ADJUST] = LAYOUT_moonlander(
     RESET,          _______,        _______,        _______,        _______,         _______,       _______,                        _______,        _______,        _______,         _______,       _______,        _______,        _______,
     WEBUSB_PAIR,    _______,        _______,        _______,        _______,         _______,       LALT(LCTL(KC_BSPACE)),          LALT(LCTL(KC_DELETE)),_______,  _______,         _______,       _______,        _______,        _______,
     _______,        _______,        AU_ON,          AU_OFF,         AU_TOG,          _______,       _______,                        _______,        _______,        RGB_TOG,         TOGGLE_LAYER_COLOR,RGB_VAD,    RGB_VAI,        _______,
@@ -182,12 +195,11 @@ void keyboard_post_init_user(void) {
 // clang-format off
 /*
  * The LED map is not sequenced like the key map - it follows a different, mostly-diagonal sequence.
- * TODO: Figure out what goes where by asking Oryx to give every key a unique color.
- * I've laid the map out the same way until I figure out a more accurate format that remains readable.
- * TODO: A function that runs once to transform the key-map-matching layout to the real one would do the trick.
+ * TODO: Make a macro like LAYOUT_moonlander to use the same ordering when manually editing this file, reordering to match the LEDs in the macro.
+ * TODO: Wire a layout here with a unique per-key color to figure out how this sequence maps to the key sequence; or find if the code already specifies somewhere.
  */
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
-    [0] = {
+    [LAYER_BASE] = {
       {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119},      {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119},
       {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119},      {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119},
       {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119},      {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119},
@@ -195,7 +207,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
       {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119},                {  0,  0,119},      {  0,  0,119},                {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119}, {  0,  0,119},
                                                                   {  0,  0,119}, {  0,  0,119}, {  0,  0,119},      {  0,  0,119}, {  0,  0,119}, {  0,  0,119} },
 
-    [1] = {
+    [LAYER_LOWER] = {
       {  0,  0,  0}, {  0,  0,  0}, { 32,255,234}, {  0,  0,  0}, {  0,  0,  0}, {146,224,255}, {  0,  0,  0},      {105,255,255}, {  0,  0,  0}, {  0,  0,  0}, {146,224,255}, {105,255,255}, {105,255,255}, {  0,  0,  0},
       {  0,  0,  0}, {146,224,255}, {  0,  0,  0}, {105,255,255}, {  0,  0,  0}, {  0,  0,  0}, {146,224,255},      {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0}, {146,224,255}, {146,224,255}, {105,255,255}, {105,255,255},
       {105,255,255}, {146,224,255}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0},      {  0,  0,  0}, {134,255,213}, {134,255,213}, {  0,  0,  0}, {134,255,213}, {  0,  0,119}, {146,224,255},
@@ -203,7 +215,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
       {134,255,213}, {  0,  0,119}, {146,224,255}, {105,255,255}, {  0,  0,  0},                { 32,255,234},      { 12,225,241},                {146,224,255}, {105,255,255}, {  0,  0,  0}, { 32,255,234}, {146,224,255},
                                                                   { 32,255,234}, {  0,  0,  0}, {  0,  0,  0},      {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0} },
 
-    [2] = {
+    [LAYER_RAISE] = {
       {  0,  0,  0}, {  0,  0,  0}, { 32,255,234}, {  0,  0,  0}, {  0,  0,  0}, {169,120,255}, {169,120,255},      {169,120,255}, {169,120,255}, {  0,  0,  0}, {169,120,255}, {169,120,255}, {169,120,255}, {169,120,255},
       {  0,  0,  0}, {169,120,255}, {169,120,255}, {169,120,255}, {169,120,255}, {  0,  0,  0}, {169,120,255},      {169,120,255}, {169,120,255}, {169,120,255}, { 12,225,241}, { 85,203,158}, { 85,203,158}, { 85,203,158},
       {  0,  0,  0}, { 85,203,158}, { 85,203,158}, { 85,203,158}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0},      {  0,  0,  0}, {134,255,213}, {134,255,213}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0}, {169,120,255},
@@ -211,7 +223,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
       {146,224,255}, {146,224,255}, {  0,  0,  0}, {146,224,255}, {146,224,255},                {146,224,255},      {169,120,255},                {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0},
                                                                   {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0},      {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0} },
 
-    [3] = {
+    [LAYER_ADJUST] = {
       {  0,204,255}, {  0,204,255}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0},      {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0}, { 48,255,153}, { 48,255,153},
       {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0}, {237,189,211}, {237,189,211}, {  0,  0,  0}, {  0,  0,  0},      {  0,  0,  0}, {146,208,210}, {146,208,210}, { 12,225,241}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0},
       {  0,  0,  0}, {  0,  0,  0}, {  0,200,220}, {  0,  0,  0}, {  0,  0,  0}, {  0,204,255}, { 12,225,241},      {146,224,255}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0}, {  0,  0,  0},
