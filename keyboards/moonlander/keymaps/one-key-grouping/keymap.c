@@ -39,6 +39,16 @@ enum custom_keycodes {
   ST_MACRO_1,
 };
 
+/*
+ * Things to change (officially beyond Oryx support):
+ * - Create layers 4+ for a left-side-only mode. Call DF(4) to activate it and DF(0) to deactivate it.
+ *   - Investigate calling DF(4) when the right side is disconnected and DF(0) when it's reconnected.
+ * - Investigate two-way OS communication, for things like notifications (with go-to macros) on-keyboard.
+ *   - If this is possible, it's also possible to emulate AuraSync for games that can use it.
+ * - Use the six status LEDs to indicate layers.
+ * - Consider binding more complex macros behind tap dances and chords.
+ */
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /*
@@ -48,11 +58,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ┌──────┬──────┤  F2  ├──────┤  F4  ├──────┬──────┐      ┌──────┬──────┤  F9  ├──────┤ F11  ├──────┬──────┐
    * │ Tab  │  F1  ├──────┤  E   ├──────┤  F5  │  F6  │      │  F7  │  F8  ├──────┤  I   ├──────┤ F12  │SysRq │
    * ├──────┼──────┤ W    ├──────┤  R   ├──────┼──────┤      ├──────┼──────┤  U   ├──────┤  O   ├──────┼──────┤
-   * │ Tab  │  Q   ├──────┤  D   ├──────┤  T   │  `   │      │  '   │  Y   ├──────┤  K   ├──────┤  P   │ Bksp │
+   * │ Tab  │  Q   ├──────┤  D   ├──────┤  T   │  `   │      │  '   │  Y   ├──────┤  K   ├──────┤  P   │  ⌫   │
    * ├──────┼──────┤ S    ├──────┤  F   ├──────┼──────┤      ├──────┼──────┤  J   ├──────┤  L   ├──────┼──────┤
    * │ Esc  │  A   ├──────┤  C   ├──────┤  G   │  ~   │      │  "   │  H   ├──────┤  ,   ├──────┤  ;   │  ⏎   │
    * ├──────┼──────┤ X    ├──────┤  V   ├──────┼──────┘      └──────┼──────┤  M   ├──────┤  .   ├──────┼──────┤
-   * │( Shft│  Z   ├──────┤L-alt ├──────┤  B   │                    │  N   ├──────┤  ◀   ├──────┤  /   │) Shft│
+   * │ ( ⇧  │  Z   ├──────┤L-alt ├──────┤  B   │                    │  N   ├──────┤  ◀   ├──────┤  /   │ ) ⇧  │
    * ├──────┼──────┤L-Meta├──────┤[ LT→1├──────┘                    └──────┤] LT→2├──────┤  ▼   ├──────┼──────┤
    * │L-Ctrl│Layout├──────┘      └──────┘                                  └──────┘      └──────┤  ▲   │  ▶   │
    * └──────┴──────┘                      ┌───────┐              ┌───────┐                      └──────┴──────┘
