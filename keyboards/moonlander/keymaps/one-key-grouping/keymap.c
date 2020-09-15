@@ -122,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,        KC_PERC,        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,        _______,        _______,        KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_KP_PLUS,     KC_DELETE,      
     KC_CAPSLOCK,    KC_MINUS,       KC_UNDS,        KC_EQUAL,       KC_PLUS,        KC_AUDIO_MUTE,  KC_MEDIA_PLAY_PAUSE,            _______,        _______,        KC_KP_4,        KC_KP_5,        KC_KP_6,        KC_KP_ENTER,    _______, 
     _______,        KC_GRAVE,       KC_TILD,        KC_BSLASH,      KC_PIPE,        _______,                                                        _______,        KC_KP_1,        KC_KP_2,        KC_KP_3,        _______,        _______, 
-    _______,        _______,        _______,        _______,        LT(3,KC_LBRACKET),_______,      _______,                        _______,                        _______,        KC_KP_0,        KC_KP_DOT,      _______,        _______, 
+    _______,        _______,        _______,        _______,        LT(3,KC_LBRACKET),              _______,                        _______,                        _______,        KC_KP_0,        KC_KP_DOT,      _______,        _______, 
                                                                     _______,        _______,        _______,                        _______,        _______,        _______
   ),
   /*
