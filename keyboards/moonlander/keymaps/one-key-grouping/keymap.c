@@ -38,6 +38,7 @@
  * The Moonlander is powered by a Cortex-M4, in the [STM32F303](https://www.st.com/en/microcontrollers-microprocessors/stm32f303.html) family.
  * - TODO: Which one specifically? ZSA probably published that information; the Moonlander is based heavily on the open source Ergodox design.
  * Its RGB matrix uses an [IS31FL3731](http://www.issi.com/WW/pdf/31FL3731.pdf) Audio Modulated Matrix LED Driver.
+ * - QMK docs on the matter: https://docs.qmk.fm/#/feature_rgb_matrix - mentions this driver directly!
  */
 enum layer_names {
   LAYER_BASE = 0,
@@ -197,6 +198,7 @@ void keyboard_post_init_user(void) {
  * The LED map is not sequenced like the key map - it follows a different, mostly-diagonal sequence.
  * TODO: Make a macro like LAYOUT_moonlander to use the same ordering when manually editing this file, reordering to match the LEDs in the macro.
  * TODO: Wire a layout here with a unique per-key color to figure out how this sequence maps to the key sequence; or find if the code already specifies somewhere.
+ * - Yep, specified even by model numbers https://docs.qmk.fm/#/feature_rgb_matrix
  */
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     [LAYER_BASE] = {
