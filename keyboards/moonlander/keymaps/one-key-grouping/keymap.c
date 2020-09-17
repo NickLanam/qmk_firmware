@@ -196,20 +196,61 @@ void keyboard_post_init_user(void) {
 }
 
 // clang-format off
-/*
- * The LED map is not sequenced like the key map - it follows a different, mostly-diagonal sequence.
- * TODO: Make a macro like LAYOUT_moonlander to use the same ordering when manually editing this file, reordering to match the LEDs in the macro.
- * TODO: Wire a layout here with a unique per-key color to figure out how this sequence maps to the key sequence; or find if the code already specifies somewhere.
- * - Yep, specified even by model numbers https://docs.qmk.fm/#/feature_rgb_matrix
- */
+
+// Reminder: These are HSV colors, not RGB.
+#define GRAY   {  0,   0, 119}
+#define BLACK  {  0,   0,   0}
+#define BLUE   {146, 224, 255}
+#define CYAN   {134, 255, 213}
+#define GREEN  {105, 255, 255}
+#define YELLOW { 32, 255, 234}
+#define PINK   {243, 222, 234}
+#define ORANGE { 12, 225, 241}
+#define PURPLE {169, 120, 255}
+#define FOREST { 85, 203, 158}
+#define RED    {  0, 204, 255}
+#define MAROON {  0, 200, 220}
+#define OLIVE  { 48, 255, 153}
+#define PINK2  {237, 189, 211}
+#define BLUE2  {146, 208, 210}
+#define VIOLET {169, 114, 196}
+
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
-    [LAYER_BASE] = { {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119} },
+    [LAYER_BASE] = LEDMAP_moonlander(
+          GRAY,   GRAY,   GRAY,   GRAY,   GRAY,   GRAY,   GRAY,        GRAY,   GRAY,   GRAY,   GRAY,   GRAY,   GRAY,   GRAY,
+          GRAY,   GRAY,   GRAY,   GRAY,   GRAY,   GRAY,   GRAY,        GRAY,   GRAY,   GRAY,   GRAY,   GRAY,   GRAY,   GRAY,
+          GRAY,   GRAY,   GRAY,   GRAY,   GRAY,   GRAY,   GRAY,        GRAY,   GRAY,   GRAY,   GRAY,   GRAY,   GRAY,   GRAY,
+          GRAY,   GRAY,   GRAY,   GRAY,   GRAY,   GRAY,                        GRAY,   GRAY,   GRAY,   GRAY,   GRAY,   GRAY,
+          GRAY,   GRAY,   GRAY,   GRAY,   GRAY,           GRAY,        GRAY,           GRAY,   GRAY,   GRAY,   GRAY,   GRAY,
+                                          GRAY,   GRAY,   GRAY,        GRAY,   GRAY,   GRAY
+    ),
 
-    [LAYER_LOWER] = { {0,0,0}, {0,0,0}, {32,255,234}, {0,0,0}, {0,0,0}, {146,224,255}, {0,0,0}, {105,255,255}, {0,0,0}, {32,255,234}, {146,224,255}, {105,255,255}, {105,255,255}, {0,0,0}, {32,255,234}, {146,224,255}, {0,0,0}, {105,255,255}, {0,0,0}, {0,0,0}, {146,224,255}, {0,0,0}, {0,0,0}, {0,0,0}, {146,224,255}, {146,224,255}, {105,255,255}, {105,255,255}, {105,255,255}, {146,224,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {134,255,213}, {134,255,213}, {0,0,0}, {134,255,213}, {0,0,119}, {146,224,255}, {243,222,234}, {0,0,0}, {134,255,213}, {0,0,119}, {146,224,255}, {243,222,234}, {0,0,0}, {134,255,213}, {0,0,119}, {146,224,255}, {105,255,255}, {0,0,0}, {134,255,213}, {0,0,119}, {146,224,255}, {105,255,255}, {0,0,0}, {32,255,234}, {12,225,241}, {146,224,255}, {105,255,255}, {0,0,0}, {32,255,234}, {146,224,255}, {32,255,234}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
+    [LAYER_LOWER] = LEDMAP_moonlander(
+         BLACK,   BLUE,   BLUE,   BLUE,   BLUE,   BLUE,   BLUE,        BLUE,   BLUE,   BLUE,   BLUE,   BLUE,   BLUE,   CYAN,
+         BLACK,  BLACK,  GREEN,  BLACK,  BLACK,  GREEN,  BLACK,      YELLOW,  GREEN,  GREEN,  GREEN,   PINK,   PINK,   CYAN,
+        YELLOW,  GREEN,  GREEN,  GREEN,  BLACK,  GREEN,  BLACK,       BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
+         BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  GREEN,                      YELLOW, YELLOW,   CYAN,   CYAN,   CYAN,   CYAN,
+         BLACK, YELLOW, YELLOW,  BLACK,   BLUE,          BLACK,       BLACK,         ORANGE,   GRAY,   GRAY,   GRAY,   GRAY,
+                                         BLACK,  BLACK,  BLACK,       BLACK,  BLACK,  BLACK
+    ),
 
-    [LAYER_RAISE] = { {0,0,0}, {0,0,0}, {32,255,234}, {0,0,0}, {0,0,0}, {169,120,255}, {169,120,255}, {169,120,255}, {169,120,255}, {32,255,234}, {169,120,255}, {169,120,255}, {169,120,255}, {169,120,255}, {32,255,234}, {169,120,255}, {169,120,255}, {169,120,255}, {169,120,255}, {0,0,0}, {169,120,255}, {169,120,255}, {169,120,255}, {169,120,255}, {12,225,241}, {85,203,158}, {85,203,158}, {85,203,158}, {0,0,0}, {85,203,158}, {85,203,158}, {85,203,158}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {134,255,213}, {134,255,213}, {0,0,0}, {0,0,0}, {0,0,0}, {169,120,255}, {169,120,255}, {0,0,119}, {0,0,0}, {0,0,0}, {169,120,255}, {146,224,255}, {146,224,255}, {146,224,255}, {169,120,255}, {169,120,255}, {146,224,255}, {146,224,255}, {146,224,255}, {146,224,255}, {0,0,0}, {146,224,255}, {146,224,255}, {146,224,255}, {169,120,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
+    [LAYER_RAISE] = LEDMAP_moonlander(
+         BLACK, PURPLE, PURPLE, PURPLE, PURPLE, FOREST, FOREST,       BLACK,  BLACK,  BLACK, PURPLE, PURPLE, PURPLE,   CYAN,
+         BLACK, PURPLE, PURPLE, PURPLE, PURPLE, FOREST, FOREST,       BLACK,  BLACK,   BLUE,   BLUE,   BLUE, PURPLE,   CYAN,
+        YELLOW, PURPLE, PURPLE, PURPLE, PURPLE, FOREST, FOREST,       BLACK,  BLACK,   BLUE,   BLUE,   BLUE,   GRAY,  BLACK,
+         BLACK, PURPLE, PURPLE, PURPLE, PURPLE,  BLACK,                       BLACK,   BLUE,   BLUE,   BLUE,  BLACK,  BLACK,
+         BLACK, YELLOW, YELLOW,  BLACK, ORANGE,          BLACK,       BLACK,         PURPLE,   BLUE, PURPLE,  BLACK,  BLACK,
+                                         BLACK,  BLACK,  BLACK,       BLACK,  BLACK,  BLACK
+    ),
 
-    [LAYER_ADJUST] = { {0,204,255}, {0,204,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {32,255,234}, {0,0,0}, {0,0,0}, {48,255,153}, {48,255,153}, {32,255,234}, {0,0,0}, {0,0,0}, {237,189,211}, {237,189,211}, {0,0,0}, {0,0,0}, {0,0,0}, {146,208,210}, {146,208,210}, {12,225,241}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,200,220}, {0,0,0}, {0,0,0}, {0,204,255}, {12,225,241}, {146,224,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {48,255,153}, {169,114,196}, {0,0,0}, {0,0,0}, {0,0,0}, {48,255,153}, {169,114,196}, {0,0,0}, {0,0,0}, {0,0,0}, {146,208,210}, {237,189,211}, {0,0,0}, {0,0,0}, {0,0,0}, {146,208,210}, {237,189,211}, {12,225,241}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,200,220}, {0,0,0}, {0,0,0}, {0,204,255}, {12,225,241}, {146,224,255} },
+    [LAYER_ADJUST] = LEDMAP_moonlander(
+           RED,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,       BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
+           RED,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK, MAROON,      MAROON,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
+         BLACK,  BLACK,  OLIVE,  PINK2,  BLUE2,  BLACK,  BLACK,       BLACK,  BLACK,  BLUE2,  BLUE2,  OLIVE,  OLIVE,  BLACK,
+         BLACK,  BLACK,  OLIVE,  PINK2,  BLUE2,  BLACK,                       BLACK,  PINK2,  PINK2, VIOLET, VIOLET,  BLACK,
+         BLACK, YELLOW, YELLOW,  BLACK, ORANGE,           BLUE,        BLUE,         ORANGE,  BLACK,  BLACK,  BLACK,  BLACK,
+                                         BLACK,    RED, ORANGE,      ORANGE,    RED,  BLACK
+    ),
 };
 // clang-format on
 
