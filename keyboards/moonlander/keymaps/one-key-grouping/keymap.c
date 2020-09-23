@@ -108,9 +108,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ┌──────┬──────┤  2   ├──────┤  4   ├──────┬──────┐      ┌──────┬──────┤  9   ├──────┤  -   ├──────┬──────┐
    * │      │  1   ├──────┤      ├──────┤  5   │  6   │      │  7   │  8   ├──────┤ RCLK ├──────┤  =   │ Ins  │
    * ├──────┼──────┤ MS_U ├──────┤      ├──────┼──────┤      ├──────┼──────┤ MCLK ├──────┤  ->  ├──────┼──────┤
-   * │      │      ├──────┤      ├──────┤ M_A0 │      │      │ TG→2 │ LCLK ├──────┤      ├──────┤  =>  │ Del  │
-   * ├──────┼──────┤ MS_D ├──────┤      ├──────┼──────┤      ├──────┼──────┤      ├──────┤      ├──────┼──────┤
-   * │ Caps │ MS_L ├──────┤ MS_R ├──────┤ M_A1 │      │      │      │      ├──────┤ Home ├──────┤      │      │
+   * │      │      ├──────┤      ├──────┤ M_A0 │      │      │ TG→2 │ LCLK ├──────┤  ▲   ├──────┤  =>  │ Del  │
+   * ├──────┼──────┤ MS_D ├──────┤      ├──────┼──────┤      ├──────┼──────┤  ▼   ├──────┤  ▶   ├──────┼──────┤
+   * │ Caps │ MS_L ├──────┤ MS_R ├──────┤ M_A1 │      │      │      │  ◀   ├──────┤ Home ├──────┤      │      │
    * ├──────┼──────┤      ├──────┤      ├──────┼──────┘      └──────┼──────┤Unicde├──────┤ PgDn ├──────┼──────┤
    * │      │      ├──────┤      ├──────┤ M_A2 │                    │Emoji ├──────┤R-Alt ├──────┤ PgUp │ End  │
    * ├──────┼──────┤ KVM2 ├──────┤//////├──────┘                    └──────┤] LT→3├──────┤R-Meta├──────┼──────┤
@@ -124,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_LOWER] = LAYOUT_moonlander(
     _______,        KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_6,                           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,       KC_EQUAL,       KC_INSERT,
     _______,        _______,        KC_MS_U,        _______,        _______,        KC_ACL0,        _______,                        TG(2),          KC_BTN1,        KC_BTN3,        KC_BTN2,        MC_ARW1,        MC_ARW2,        KC_DELETE,
-    KC_CAPSLOCK,    KC_MS_L,        KC_MS_D,        KC_MS_R,        _______,        KC_ACL1,        _______,                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
+    KC_CAPSLOCK,    KC_MS_L,        KC_MS_D,        KC_MS_R,        _______,        KC_ACL1,        _______,                        _______,        KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       _______,        _______,
     _______,        _______,        _______,        _______,        _______,        KC_ACL2,                                                        LCTL(LSFT(KC_E)),LCTL(LSFT(KC_U)),KC_HOME,      KC_PGDOWN,      KC_PGUP,        KC_END,
     _______,        MC_KVM1,        MC_KVM2,        _______,        _______,                        _______,                        _______,                        LT(3,KC_RBRACKET),KC_RALT,      KC_RGUI,        KC_APPLICATION, KC_RCTRL,
                                                                     _______,        _______,        _______,                        _______,        _______,        _______
@@ -228,7 +228,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     [LAYER_LOWER] = LEDMAP_moonlander(
          BLACK,   BLUE,   BLUE,   BLUE,   BLUE,   BLUE,   BLUE,        BLUE,   BLUE,   BLUE,   BLUE,   BLUE,   BLUE,   CYAN,
          BLACK,  BLACK,  GREEN,  BLACK,  BLACK,  GREEN,  BLACK,      YELLOW,  GREEN,  GREEN,  GREEN,   PINK,   PINK,   CYAN,
-        YELLOW,  GREEN,  GREEN,  GREEN,  BLACK,  GREEN,  BLACK,       BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
+        YELLOW,  GREEN,  GREEN,  GREEN,  BLACK,  GREEN,  BLACK,       BLACK,   CYAN,   CYAN,   CYAN,   CYAN,  BLACK,  BLACK,
          BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  GREEN,                      YELLOW, YELLOW,   CYAN,   CYAN,   CYAN,   CYAN,
          BLACK, YELLOW, YELLOW,  BLACK,   BLUE,          BLACK,       BLACK,         ORANGE,   GRAY,   GRAY,   GRAY,   GRAY,
                                          BLACK,  BLACK,  BLACK,       BLACK,  BLACK,  BLACK
