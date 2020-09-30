@@ -125,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,        KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_6,                           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,       KC_EQUAL,       KC_INSERT,
     _______,        _______,        KC_MS_U,        _______,        _______,        KC_ACL0,        _______,                        TG(2),          KC_BTN1,        KC_BTN3,        KC_BTN2,        MC_ARW1,        MC_ARW2,        KC_DELETE,
     KC_CAPSLOCK,    KC_MS_L,        KC_MS_D,        KC_MS_R,        _______,        KC_ACL1,        _______,                        _______,        KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       _______,        _______,
-    _______,        _______,        _______,        _______,        _______,        KC_ACL2,                                                        KC_HOME,        KC_PGDOWN,      KC_PGUP,        KC_END,         LCTL(LSFT(KC_E)),LCTL(LSFT(KC_U)),
+    _______,        _______,        _______,        _______,        _______,        KC_ACL2,                                                        KC_HOME,        KC_PGUP,        KC_PGDN,        KC_END,         LCTL(LSFT(KC_E)),LCTL(LSFT(KC_U)),
     _______,        MC_KVM1,        MC_KVM2,        _______,        _______,                        _______,                        _______,                        LT(3,KC_RBRACKET),KC_RALT,      KC_RGUI,        KC_APPLICATION, KC_RCTRL,
                                                                     _______,        _______,        _______,                        _______,        _______,        _______
   ),
