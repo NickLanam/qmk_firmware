@@ -44,7 +44,8 @@ enum layer_names {
   LAYER_BASE = 0,
   LAYER_LOWER,
   LAYER_RAISE,
-  LAYER_ADJUST
+  LAYER_ADJUST,
+  LAYER_LOCKS
 };
 
 enum custom_keycodes {
@@ -78,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                      ┌──────┐                                                ┌──────┐
    *               ┌──────┤  F3  ├──────┐                                  ┌──────┤ F10  ├──────┐
    * ┌──────┬──────┤  F2  ├──────┤  F4  ├──────┬──────┐      ┌──────┬──────┤  F9  ├──────┤ F11  ├──────┬──────┐
-   * │ Tab  │  F1  ├──────┤  E   ├──────┤  F5  │  F6  │      │  F7  │  F8  ├──────┤  I   ├──────┤ F12  │SysRq │
+   * │ MO→4 │  F1  ├──────┤  E   ├──────┤  F5  │  F6  │      │  F7  │  F8  ├──────┤  I   ├──────┤ F12  │SysRq │
    * ├──────┼──────┤ W    ├──────┤  R   ├──────┼──────┤      ├──────┼──────┤  U   ├──────┤  O   ├──────┼──────┤
    * │ Tab  │  Q   ├──────┤  D   ├──────┤  T   │  `   │      │  '   │  Y   ├──────┤  K   ├──────┤  P   │  ⌫   │
    * ├──────┼──────┤ S    ├──────┤  F   ├──────┼──────┤      ├──────┼──────┤  J   ├──────┤  L   ├──────┼──────┤
@@ -94,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                                      └───┴───┴───┘      └───┴───┴───┘
    */
   [LAYER_BASE] = LAYOUT_moonlander(
-    KC_TAB,         KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_F6,                          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_PSCREEN,
+    MO(4),          KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_F6,                          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_PSCREEN,
     KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_GRAVE,                       KC_QUOTE,       KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSPACE,
     KC_ESCAPE,      KC_A,           KC_S,           KC_D,           KC_F,           KC_G,           KC_TILD,                        LSFT(KC_QUOTE), KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      KC_ENTER,
     KC_LSPO,        KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_RSPC,
@@ -185,6 +186,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,        MC_KVM1,        MC_KVM2,        _______,        _______,                        DYN_MACRO_PLAY1,                DYN_MACRO_PLAY2,                _______,         _______,       _______,        _______,        _______,
                                                                     _______,         DYN_REC_START1,DYN_REC_STOP,                   DYN_REC_STOP,   DYN_REC_START2, _______
   ),
+  /*
+   * Locks 4
+   *                      ┌──────┐                                                ┌──────┐
+   *               ┌──────┤ TO→3 ├──────┐                                  ┌──────┤      ├──────┐
+   * ┌──────┬──────┤ TO→2 ├──────┤      ├──────┬──────┐      ┌──────┬──────┤      ├──────┤      ├──────┬──────┐
+   * |//////│ TO→1 ├──────┤      ├──────┤      │      │      │      │      ├──────┤      ├──────┤      │      │
+   * ├──────┼──────┤      ├──────┤      ├──────┼──────┤      ├──────┼──────┤      ├──────┤      ├──────┼──────┤
+   * │      │      ├──────┤      ├──────┤      │      │      │      │      ├──────┤      ├──────┤      │      │
+   * ├──────┼──────┤      ├──────┤      ├──────┼──────┤      ├──────┼──────┤      ├──────┤      ├──────┼──────┤
+   * │      │      ├──────┤      ├──────┤      │      │      │      │      ├──────┤      ├──────┤      │      │
+   * ├──────┼──────┤      ├──────┤      ├──────┼──────┘      └──────┼──────┤      ├──────┤      ├──────┼──────┤
+   * │      │      ├──────┤      ├──────┤      │                    │      ├──────┤      ├──────┤      │      │
+   * ├──────┼──────┤      ├──────┤      ├──────┘                    └──────┤      ├──────┤      ├──────┼──────┤
+   * │      │      ├──────┘      └──────┘                                  └──────┘      └──────┤      │      │
+   * └──────┴──────┘                      ┌───────┐              ┌───────┐                      └──────┴──────┘
+   *                                      │       │              │       │
+   *                                      ├───┬───┼───┐      ┌───┼───┬───┤
+   *                                      │   │   │   │      │   │   │   │
+   *                                      └───┴───┴───┘      └───┴───┴───┘
+   */
+  [LAYER_LOCKS] = LAYOUT_moonlander(
+    _______,        TO(1),          TO(2),          TO(3),          _______,         _______,       _______,                        _______,        _______,        _______,         _______,       _______,        _______,        _______,
+    _______,        _______,        _______,        _______,        _______,         _______,       _______,                        _______,        _______,        _______,         _______,       _______,        _______,        _______,
+    _______,        _______,        _______,        _______,        _______,         _______,       _______,                        _______,        _______,        _______,         _______,       _______,        _______,        _______,
+    _______,        _______,        _______,        _______,        _______,         _______,                                                       _______,        _______,         _______,       _______,        _______,        _______,
+    _______,        _______,        _______,        _______,        _______,                        _______,                        _______,                        _______,         _______,       _______,        _______,        _______,
+                                                                    _______,         _______,       _______,                        _______,        _______,        _______
+  ),
 };
 // clang-format on
 
@@ -250,6 +279,15 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
          BLACK,  BLACK,  OLIVE,  PINK2,  BLUE2,  BLACK,                       BLACK,  PINK2,  PINK2, VIOLET, VIOLET,  BLACK,
          BLACK, YELLOW, YELLOW,  BLACK, ORANGE,           BLUE,        BLUE,         ORANGE,  BLACK,  BLACK,  BLACK,  BLACK,
                                          BLACK,    RED, ORANGE,      ORANGE,    RED,  BLACK
+    ),
+
+    [LAYER_LOCKS] = LEDMAP_moonlander(
+         GRAY,   BLUE,   PURPLE, ORANGE, BLACK,  BLACK,  BLACK,       BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
+         BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,       BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
+         BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,       BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
+         BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,                       BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
+         BLACK,  BLACK,  BLACK,  BLACK,  BLACK,          BLACK,       BLACK,          BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
+                                         BLACK,  BLACK,  BLACK,       BLACK,  BLACK,  BLACK
     ),
 };
 // clang-format on
