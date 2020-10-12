@@ -107,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                      ┌──────┐                                                ┌──────┐
    *               ┌──────┤  3   ├──────┐                                  ┌──────┤  0   ├──────┐
    * ┌──────┬──────┤  2   ├──────┤  4   ├──────┬──────┐      ┌──────┬──────┤  9   ├──────┤  -   ├──────┬──────┐
-   * │      │  1   ├──────┤      ├──────┤  5   │  6   │      │  7   │  8   ├──────┤ RCLK ├──────┤  =   │ Ins  │
+   * │ TO→0 │  1   ├──────┤      ├──────┤  5   │  6   │      │  7   │  8   ├──────┤ RCLK ├──────┤  =   │ Ins  │
    * ├──────┼──────┤ MS_U ├──────┤      ├──────┼──────┤      ├──────┼──────┤ MCLK ├──────┤  ->  ├──────┼──────┤
    * │      │      ├──────┤      ├──────┤ M_A0 │      │      │ TG→2 │ LCLK ├──────┤  ▲   ├──────┤  =>  │ Del  │
    * ├──────┼──────┤ MS_D ├──────┤      ├──────┼──────┤      ├──────┼──────┤  ▼   ├──────┤  ▶   ├──────┼──────┤
@@ -123,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                                      └───┴───┴───┘      └───┴───┴───┘
    */
   [LAYER_LOWER] = LAYOUT_moonlander(
-    _______,        KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_6,                           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,       KC_EQUAL,       KC_INSERT,
+    TO(0),          KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_6,                           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,       KC_EQUAL,       KC_INSERT,
     _______,        _______,        KC_MS_U,        _______,        _______,        KC_ACL0,        _______,                        TG(2),          KC_BTN1,        KC_BTN3,        KC_BTN2,        MC_ARW1,        MC_ARW2,        KC_DELETE,
     KC_CAPSLOCK,    KC_MS_L,        KC_MS_D,        KC_MS_R,        _______,        KC_ACL1,        _______,                        _______,        KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       _______,        _______,
     _______,        _______,        _______,        _______,        _______,        KC_ACL2,                                                        KC_HOME,        KC_PGUP,        KC_PGDN,        KC_END,         LCTL(LSFT(KC_E)),LCTL(LSFT(KC_U)),
@@ -135,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                      ┌──────┐                                                ┌──────┐
    *               ┌──────┤  #   ├──────┐                                  ┌──────┤ num/ ├──────┐
    * ┌──────┬──────┤  @   ├──────┤  $   ├──────┬──────┐      ┌──────┬──────┤      ├──────┤ num* ├──────┬──────┐
-   * │      │  !   ├──────┤  &   ├──────┤VolDn │VolUp │      │      │      ├──────┤ num8 ├──────┤ num- │Pause │
+   * │ TO→0 │  !   ├──────┤  &   ├──────┤VolDn │VolUp │      │      │      ├──────┤ num8 ├──────┤ num- │Pause │
    * ├──────┼──────┤  ^   ├──────┤  *   ├──────┼──────┤      ├──────┼──────┤ num7 ├──────┤ num9 ├──────┼──────┤
    * │      │  %   ├──────┤  =   ├──────┤ Prev │ Next │      │      │      ├──────┤ num5 ├──────┤ num+ │ Del  │
    * ├──────┼──────┤  _   ├──────┤  +   ├──────┼──────┤      ├──────┼──────┤ num4 ├──────┤ num6 ├──────┼──────┤
@@ -151,7 +151,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                                      └───┴───┴───┘      └───┴───┴───┘
    */
   [LAYER_RAISE] = LAYOUT_moonlander(
-    _______,        KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,              _______,        _______,        _______,        KC_KP_SLASH,    KC_KP_ASTERISK, KC_KP_MINUS,    KC_PAUSE,
+    TO(0),          KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,              _______,        _______,        _______,        KC_KP_SLASH,    KC_KP_ASTERISK, KC_KP_MINUS,    KC_PAUSE,
     _______,        KC_PERC,        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,        _______,        _______,        KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_KP_PLUS,     KC_DELETE,
     KC_CAPSLOCK,    KC_MINUS,       KC_UNDS,        KC_EQUAL,       KC_PLUS,        KC_AUDIO_MUTE,  KC_MEDIA_PLAY_PAUSE,            _______,        _______,        KC_KP_4,        KC_KP_5,        KC_KP_6,        KC_KP_ENTER,    _______,
     _______,        KC_GRAVE,       KC_TILD,        KC_BSLASH,      KC_PIPE,        _______,                                                        _______,        KC_KP_1,        KC_KP_2,        KC_KP_3,        _______,        _______,
@@ -167,7 +167,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ├──────┼──────┤      ├──────┤      ├──────┼──────┤      ├──────┼──────┤      ├──────┤      ├──────┼──────┤
    * │ Oryx │      ├──────┤SndOff├──────┤      │C-A-Bk│      │C-A-Dl│      ├──────┤RGBTgl├──────┤      │      │
    * ├──────┼──────┤SndOn ├──────┤SndTgl├──────┼──────┤      ├──────┼──────┤Lights├──────┤ Dark ├──────┼──────┤
-   * │      │      ├──────┤♪ Off ├──────┤      │      │      │      │      ├──────┤StopAn├──────┤Bright│      │
+   * │ TO→0 │      ├──────┤♪ Off ├──────┤      │      │      │      │      ├──────┤StopAn├──────┤Bright│      │
    * ├──────┼──────┤ ♪ On ├──────┤♪ Tgl ├──────┼──────┘      └──────┼──────┤NxtAni├──────┤Slower├──────┼──────┤
    * │      │      ├──────┤      ├──────┤      │                    │      ├──────┤      ├──────┤Faster│      │
    * ├──────┼──────┤ KVM2 ├──────┤//////├──────┘                    └──────┤//////├──────┤      ├──────┼──────┤
@@ -181,7 +181,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_ADJUST] = LAYOUT_moonlander(
     RESET,          _______,        _______,        _______,        _______,         _______,       _______,                        _______,        _______,        _______,         _______,       _______,        _______,        _______,
     WEBUSB_PAIR,    _______,        _______,        _______,        _______,         _______,       LALT(LCTL(KC_BSPACE)),          LALT(LCTL(KC_DELETE)),_______,  _______,         _______,       _______,        _______,        _______,
-    _______,        _______,        AU_ON,          AU_OFF,         AU_TOG,          _______,       _______,                        _______,        _______,        RGB_TOG,         TOGGLE_LAYER_COLOR,RGB_VAD,    RGB_VAI,        _______,
+    TO(0),          _______,        AU_ON,          AU_OFF,         AU_TOG,          _______,       _______,                        _______,        _______,        RGB_TOG,         TOGGLE_LAYER_COLOR,RGB_VAD,    RGB_VAI,        _______,
     _______,        _______,        MU_ON,          MU_OFF,         MU_TOG,          _______,                                                       _______,        RGB_MOD,         RGB_SLD,       RGB_HUD,        RGB_HUI,        _______,
     _______,        MC_KVM1,        MC_KVM2,        _______,        _______,                        DYN_MACRO_PLAY1,                DYN_MACRO_PLAY2,                _______,         _______,       _______,        _______,        _______,
                                                                     _______,         DYN_REC_START1,DYN_REC_STOP,                   DYN_REC_STOP,   DYN_REC_START2, _______
