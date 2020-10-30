@@ -2,6 +2,8 @@
 #include "version.h"
 #include "keymap_korean.h"
 
+#define MOON_LED_LEVEL LED_LEVEL
+
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
   MC_KVM1,
