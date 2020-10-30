@@ -22,6 +22,7 @@ build/
 .vagrant/
 quantum/version.h
 .idea/
+*.code-workspace
 CMakeLists.txt
 cmake-build-debug
 .clang_complete
