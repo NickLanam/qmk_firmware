@@ -20,21 +20,43 @@ enum layer_names {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  /*
+   * Base layer: typing normally
+   * TODO: Fill this out and make one for the other layers too
+   *
+   *                      ┌──────┐                                                ┌──────┐
+   *               ┌──────┤      ├──────┐                                  ┌──────┤      ├──────┐
+   * ┌──────┬──────┤      ├──────┤      ├──────┬──────┐      ┌──────┬──────┤      ├──────┤      ├──────┬──────┐
+   * |      │      ├──────┤      ├──────┤      │      │      │      │      ├──────┤      ├──────┤      │      │
+   * ├──────┼──────┤      ├──────┤      ├──────┼──────┤      ├──────┼──────┤      ├──────┤      ├──────┼──────┤
+   * │      │      ├──────┤      ├──────┤      │      │      │      │      ├──────┤      ├──────┤      │      │
+   * ├──────┼──────┤      ├──────┤      ├──────┼──────┤      ├──────┼──────┤      ├──────┤      ├──────┼──────┤
+   * │      │      ├──────┤      ├──────┤      │      │      │      │      ├──────┤      ├──────┤      │      │
+   * ├──────┼──────┤      ├──────┤      ├──────┼──────┘      └──────┼──────┤      ├──────┤      ├──────┼──────┤
+   * │      │      ├──────┤      ├──────┤      │                    │      ├──────┤      ├──────┤      │      │
+   * ├──────┼──────┤      ├──────┤      ├──────┘                    └──────┤      ├──────┤      ├──────┼──────┤
+   * │      │      ├──────┘      └──────┘                                  └──────┘      └──────┤      │      │
+   * └──────┴──────┘                      ┌───────┐              ┌───────┐                      └──────┴──────┘
+   *                                      │       │              │       │
+   *                                      ├───┬───┼───┐      ┌───┼───┬───┤
+   *                                      │   │   │   │      │   │   │   │
+   *                                      └───┴───┴───┘      └───┴───┴───┘
+   */
   [BASE] = LAYOUT_moonlander(
     TT(5),          KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_LCBR,                                        KC_RCBR,        KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         TT(4),          
     KC_MINUS,       KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_LBRACKET,                                    KC_RBRACKET,    KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_EQUAL,       
-    KC_BSPACE,      KC_A,           LSFT_T(KC_S),   LGUI_T(KC_D),   KC_F,           KC_G,           KC_LPRN,                                                                        KC_RPRN,        KC_H,           KC_J,           RGUI_T(KC_K),   RSFT_T(KC_L),   KC_SCOLON,      KC_DELETE,      
-    KC_LSHIFT,      LCTL_T(KC_Z),   KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         RCTL_T(KC_SLASH),KC_RSHIFT,      
-    KC_LCTRL,       KC_LALT,        KC_LGUI,        KC_F11,         LALT_T(KC_QUOTE),KC_TAB,                                                                                                         KC_ESCAPE,      LALT_T(KC_GRAVE),KC_F12,         KC_RGUI,        KC_RALT,        KC_RCTRL,       
-    LT(2,KC_SPACE), LT(3,KC_ENTER), TT(2),                          TT(3),          LT(3,KC_ENTER), LT(2,KC_SPACE)
+    KC_BSPACE,      KC_A,           LSFT_T(KC_S),   LGUI_T(KC_D),   KC_F,           KC_G,           KC_LPRN,                                        KC_RPRN,        KC_H,           KC_J,           RGUI_T(KC_K),   RSFT_T(KC_L),   KC_SCOLON,      KC_DELETE,      
+    KC_LSHIFT,      LCTL_T(KC_Z),   KC_X,           KC_C,           KC_V,           KC_B,                                                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         RCTL_T(KC_SLASH),KC_RSHIFT,      
+    KC_LCTRL,       KC_LALT,        KC_LGUI,        KC_F11,         LALT_T(KC_QUOTE),               KC_TAB,                                         KC_ESCAPE,                      LALT_T(KC_GRAVE),KC_F12,        KC_RGUI,        KC_RALT,        KC_RCTRL,       
+                                                                    LT(2,KC_SPACE), LT(3,KC_ENTER), TT(2),                                          TT(3),          LT(3,KC_ENTER), LT(2,KC_SPACE)
   ),
   [GAME] = LAYOUT_moonlander(
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,        
-    _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,        
-    _______,        _______,        KC_S,           KC_D,           KC_F,           _______,        _______,                                                                        _______,        _______,        KC_J,           KC_K,           KC_L,           _______,        _______,        
-    _______,        KC_Z,           _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        KC_SLASH,       _______,        
-    _______,        _______,        _______,        _______,        KC_QUOTE,       _______,                                                                                                        _______,        KC_GRAVE,       _______,        _______,        _______,        _______,        
-    KC_SPACE,       KC_ENTER,       _______,                        _______,        KC_ENTER,       KC_SPACE
+    KC_TAB,         _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,        
+    _______,        _______,        KC_S,           KC_D,           KC_F,           _______,        _______,                                        _______,        _______,        KC_J,           KC_K,           KC_L,           _______,        _______,        
+    _______,        KC_Z,           _______,        _______,        _______,        _______,                                                                        _______,        _______,        _______,        _______,        KC_SLASH,       _______,        
+    _______,        _______,        _______,        _______,        KC_LALT,                        KC_MINUS,                                       _______,                        KC_LALT,        _______,        _______,        _______,        _______,        
+                                                                    KC_SPACE,       KC_ENTER,       _______,                                        _______,        KC_ENTER,       KC_SPACE
   ),
   [SYM_NUM] = LAYOUT_moonlander(
     TO(0),          XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        KC_AUDIO_MUTE,                                  KC_MEDIA_PREV_TRACK,XXXXXXX,        KC_NUMLOCK,     KC_KP_SLASH,    KC_KP_ASTERISK, KC_KP_MINUS,    _______,        
@@ -76,6 +98,9 @@ extern rgb_config_t rgb_matrix_config;
 void keyboard_post_init_user(void) {
   rgb_matrix_enable();
 }
+
+// TODO: Define all of these colors. Prettify the layout of the LEDs first though.
+#define DIMWHITE {0, 0, 119};
 
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     [BASE] = { {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119}, {0,0,119} },
