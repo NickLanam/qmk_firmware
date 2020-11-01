@@ -112,61 +112,59 @@ void keyboard_post_init_user(void) {
 #define LIME   {105, 255, 255}
 #define GREEN  { 85, 203, 158}
 
-// TODO: This fails to compile, thinking that the first and last layers are providing only 71 of the 72 arguments. They are providing 72.
-// Providing 73 yields entirely broken unrelated errors, so the problem seems to be elsewhere. A subtle typo somewhere.
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
   [LAYER_BASE] = LEDMAP_moonlander(
-    DIM,     DIM,     DIM,     DIM,     DIM,     DIM,     DIM,          DIM,     DIM,     DIM,     DIM,     DIM,     DIM,     DIM,     
-    DIM,     DIM,     DIM,     DIM,     DIM,     DIM,     DIM,          DIM,     DIM,     DIM,     DIM,     DIM,     DIM,     DIM,     
-    DIM,     DIM,     DIM,     DIM,     DIM,     DIM,     DIM,          DIM,     DIM,     DIM,     DIM,     DIM,     DIM,     DIM,     
-    DIM,     DIM,     DIM,     DIM,     DIM,     DIM,                            DIM,     DIM,     DIM,     DIM,     DIM,     DIM,     
-    DIM,     DIM,     DIM,     DIM,     DIM,              DIM,          DIM               DIM,     DIM,     DIM,     DIM,     DIM,     
-                                        DIM,     DIM,     DIM,          DIM,     DIM,     DIM
+    DIM,    DIM,    DIM,    DIM,    DIM,    DIM,    DIM,         DIM,    DIM,    DIM,    DIM,    DIM,    DIM,    DIM,    
+    DIM,    DIM,    DIM,    DIM,    DIM,    DIM,    DIM,         DIM,    DIM,    DIM,    DIM,    DIM,    DIM,    DIM,    
+    DIM,    DIM,    DIM,    DIM,    DIM,    DIM,    DIM,         DIM,    DIM,    DIM,    DIM,    DIM,    DIM,    DIM,    
+    DIM,    DIM,    DIM,    DIM,    DIM,    DIM,                         DIM,    DIM,    DIM,    DIM,    DIM,    DIM,    
+    DIM,    DIM,    DIM,    DIM,    DIM,            DIM,         DIM,            DIM,    DIM,    DIM,    DIM,    DIM,    
+                                    DIM,    DIM,    DIM,         DIM,    DIM,    DIM
   ),
 
   [LAYER_GAME] = LEDMAP_moonlander(
-    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,         NAVY,    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,
-    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,         NAVY,    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,
-    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,         NAVY,    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,
-    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,                           NAVY,    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,
-    NAVY,    NAVY,    NAVY,    NAVY,    NAVY,             NAVY,         NAVY,             NAVY,    NAVY,    NAVY,    NAVY,    NAVY,
-                                        NAVY,    NAVY,    NAVY,         NAVY,    NAVY,    NAVY
+    NAVY,   NAVY,   NAVY,   NAVY,   NAVY,   NAVY,   NAVY,        NAVY,   NAVY,   NAVY,   NAVY,   NAVY,   NAVY,   NAVY,
+    NAVY,   NAVY,   NAVY,   NAVY,   NAVY,   NAVY,   NAVY,        NAVY,   NAVY,   NAVY,   NAVY,   NAVY,   NAVY,   NAVY,
+    NAVY,   NAVY,   NAVY,   NAVY,   NAVY,   NAVY,   NAVY,        NAVY,   NAVY,   NAVY,   NAVY,   NAVY,   NAVY,   NAVY,
+    NAVY,   NAVY,   NAVY,   NAVY,   NAVY,   NAVY,                        NAVY,   NAVY,   NAVY,   NAVY,   NAVY,   NAVY,
+    NAVY,   NAVY,   NAVY,   NAVY,   NAVY,           NAVY,        NAVY,           NAVY,   NAVY,   NAVY,   NAVY,   NAVY,
+                                    NAVY,   NAVY,   NAVY,        NAVY,   NAVY,   NAVY
   ),
 
   [LAYER_SYM_NUM] = LEDMAP_moonlander(
-    WHITE,  BLACK,   BLACK,   BLACK,    BLACK,   BLACK,   NAVY,         NAVY,    BLACK,   YELLOW,  PURPLE,  PURPLE,  PURPLE,  BLACK,     
-    BLACK,  PURPLE,  PURPLE,  PURPLE,   PURPLE,  BLACK,   NAVY,         NAVY,    BLACK,   BLUE,    BLUE,    BLUE,    PURPLE,  BLACK,     
-    BLACK,  PURPLE,  PURPLE,  PURPLE,   PURPLE,  PURPLE,  NAVY,         NAVY,    BLACK,   BLUE,    BLUE,    BLUE,    PURPLE,  BLACK,     
-    BLACK,  PURPLE,  PURPLE,  PURPLE,   PURPLE,  PURPLE,                         BLACK,   BLUE,    BLUE,    BLUE,    BLACK,   BLACK,     
-    BLACK,  ORANGE,  ORANGE,  BLACK,    BLUE,             BLACK,        BLACK,            BLUE,    PURPLE,  PURPLE,  BLACK,   BLACK,     
-                                        PURPLE,  LIME,    PURPLE,       LIME,    LIME,    PURPLE
+    WHITE, BLACK,  BLACK,  BLACK,   BLACK,  BLACK,  NAVY,        NAVY,   BLACK,  YELLOW, PURPLE, PURPLE, PURPLE, BLACK,    
+    BLACK, PURPLE, PURPLE, PURPLE,  PURPLE, BLACK,  NAVY,        NAVY,   BLACK,  BLUE,   BLUE,   BLUE,   PURPLE, BLACK,    
+    BLACK, PURPLE, PURPLE, PURPLE,  PURPLE, PURPLE, NAVY,        NAVY,   BLACK,  BLUE,   BLUE,   BLUE,   PURPLE, BLACK,    
+    BLACK, PURPLE, PURPLE, PURPLE,  PURPLE, PURPLE,                      BLACK,  BLUE,   BLUE,   BLUE,   BLACK,  BLACK,    
+    BLACK, ORANGE, ORANGE, BLACK,   BLUE,           BLACK,       BLACK,          BLUE,   PURPLE, PURPLE, BLACK,  BLACK,    
+                                    PURPLE, LIME,   PURPLE,      LIME,   LIME,   PURPLE
   ),
 
   [LAYER_MOU_NAV] = LEDMAP_moonlander(
-    WHITE,  LIME,    LIME,    LIME,     BLACK,   BLACK,   NAVY,         NAVY,    CYAN,    CYAN,    CYAN,    YELLOW,  BLACK,   BLACK,
-    BLACK,  GREEN,   GREEN,   GREEN,    GREEN,   BLACK,   NAVY,         NAVY,    BLACK,   BLACK,   BLACK,   BLACK,   BLACK,   BLACK,
-    YELLOW, LIME,    LIME,    LIME,     LIME,    BLACK,   NAVY,         NAVY,    CYAN,    CYAN,    CYAN,    CYAN,    BLACK,   BLACK,
-    BLACK,  GREEN,   GREEN,   GREEN,    GREEN,   GREEN,                          CYAN,    CYAN,    CYAN,    CYAN,    BLACK,   BLACK,
-    BLACK,  ORANGE,  ORANGE,  BLACK,    BLACK,            BLACK,        BLACK,            BLACK,   BLACK,   BLACK,   BLACK,   BLACK,
-                                        PURPLE,  LIME,    PURPLE,       LIME,    LIME,    PURPLE
+    WHITE, LIME,   LIME,   LIME,    BLACK,  BLACK,  NAVY,        NAVY,   CYAN,   CYAN,   CYAN,   YELLOW, BLACK,  BLACK,
+    BLACK, GREEN,  GREEN,  GREEN,   GREEN,  BLACK,  NAVY,        NAVY,   BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
+    YELLOW,LIME,   LIME,   LIME,    LIME,   BLACK,  NAVY,        NAVY,   CYAN,   CYAN,   CYAN,   CYAN,   BLACK,  BLACK,
+    BLACK, GREEN,  GREEN,  GREEN,   GREEN,  GREEN,                       CYAN,   CYAN,   CYAN,   CYAN,   BLACK,  BLACK,
+    BLACK, ORANGE, ORANGE, BLACK,   BLACK,          BLACK,       BLACK,          BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
+                                    PURPLE, LIME,   PURPLE,      LIME,   LIME,   PURPLE
   ),
 
   [LAYER_NUMPAD] = LEDMAP_moonlander(
-    WHITE,  BLACK,   BLACK,   BLACK,    BLACK,   BLACK,   BLACK,        BLACK,   BLACK,   YELLOW,  PURPLE,  PURPLE,  PURPLE,  BLACK,
-    BLACK,  BLACK,   BLACK,   BLACK,    BLACK,   BLACK,   BLACK,        BLACK,   BLACK,   BLUE,    BLUE,    BLUE,    PURPLE,  BLACK,
-    BLACK,  BLACK,   BLACK,   BLACK,    BLACK,   BLACK,   BLACK,        BLACK,   BLACK,   BLUE,    BLUE,    BLUE,    PURPLE,  BLACK,
-    BLACK,  BLACK,   BLACK,   BLACK,    BLACK,   BLACK,                          BLACK,   BLUE,    BLUE,    BLUE,    BLACK,   BLACK,
-    BLACK,  BLACK,   BLACK,   BLACK,    BLACK,            BLACK,        BLACK,            BLUE,    PURPLE,  PURPLE,  BLACK,   BLACK,
-                                        BLACK,   BLACK,   BLACK,        BLACK,   BLACK,   BLACK
+    WHITE, BLACK,  BLACK,  BLACK,   BLACK,  BLACK,  BLACK,       BLACK,  BLACK,  YELLOW, PURPLE, PURPLE, PURPLE, BLACK,
+    BLACK, BLACK,  BLACK,  BLACK,   BLACK,  BLACK,  BLACK,       BLACK,  BLACK,  BLUE,   BLUE,   BLUE,   PURPLE, BLACK,
+    BLACK, BLACK,  BLACK,  BLACK,   BLACK,  BLACK,  BLACK,       BLACK,  BLACK,  BLUE,   BLUE,   BLUE,   PURPLE, BLACK,
+    BLACK, BLACK,  BLACK,  BLACK,   BLACK,  BLACK,                       BLACK,  BLUE,   BLUE,   BLUE,   BLACK,  BLACK,
+    BLACK, BLACK,  BLACK,  BLACK,   BLACK,          BLACK,       BLACK,          BLUE,   PURPLE, PURPLE, BLACK,  BLACK,
+                                    BLACK,  BLACK,  BLACK,       BLACK,  BLACK,  BLACK
   ),
 
   [LAYER_BOARD_CTRL] = LEDMAP_moonlander(
-    WHITE,  NAVY,    PURPLE,  LIME,     YELLOW,  BLACK,   BLACK,        RED,     YELLOW,  RED,     RED,     BLACK,   GREEN,   RED,
-    BLACK,  BLACK,   BLACK,   BLACK,    BLACK,   BLACK,   BLACK,        BLACK,   BLACK,   BLACK,   BLACK,   BLACK,   BLACK,   BLACK,
-    CYAN,   CYAN,    CYAN,    CYAN,     CYAN,    CYAN,    BLACK,        CYAN,    CYAN,    CYAN,    BLACK,   BLACK,   BLACK,   BLACK,
-    CYAN,   CYAN,    CYAN,    CYAN,     CYAN,    CYAN,                           CYAN,    CYAN,    BLACK,   BLACK,   BLACK,   BLACK,
-    BLACK,  BLACK,   BLACK,   BLACK,    BLACK,            GREEN,        GREEN,            BLACK,   BLACK,   BLACK,   BLACK,   BLACK,
-                                        BLACK,   RED,     ORANGE,       ORANGE   RED,     BLACK
+    WHITE, NAVY,   PURPLE, LIME,    YELLOW, BLACK,  BLACK,       RED,    YELLOW, RED,    RED,    BLACK,  GREEN,  RED,
+    BLACK, BLACK,  BLACK,  BLACK,   BLACK,  BLACK,  BLACK,       BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
+    CYAN,  CYAN,   CYAN,   CYAN,    CYAN,   CYAN,   BLACK,       CYAN,   CYAN,   CYAN,   BLACK,  BLACK,  BLACK,  BLACK,
+    CYAN,  CYAN,   CYAN,   CYAN,    CYAN,   CYAN,                        CYAN,   CYAN,   BLACK,  BLACK,  BLACK,  BLACK,
+    BLACK, BLACK,  BLACK,  BLACK,   BLACK,          GREEN,       GREEN,          BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
+                                    BLACK,  RED,    ORANGE,      ORANGE, RED,    BLACK
   ),
 };
 
