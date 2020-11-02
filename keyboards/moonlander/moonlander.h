@@ -68,7 +68,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     k00, k10, k20, k30, k40, \
     k01, k11, k21, k31, k41, \
     k02, k12, k22, k32, k42, \
-    k03, k13, k23, k33, k34, \
+    k03, k13, k23, k33, k43, \
     k04, k14, k24, k34, k44, \
     k05, k15, k25, k35, \
     k06, k16, k26,      k50, \
