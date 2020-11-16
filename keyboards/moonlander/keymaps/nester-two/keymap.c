@@ -48,11 +48,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * Symbols on left hand, numbers on right hand
    */
   [LAYER_SYM_NUM] = LAYOUT_moonlander(
-    TO(0),          XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        KC_MUTE,                        KC_MNXT,        KC_CAPSLOCK,    KC_NUMLOCK,     KC_KP_SLASH,    KC_KP_ASTERISK, KC_KP_MINUS,    _______,        
-    _______,        KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         XXXXXXX,        KC_VOLU,                        KC_MPRV,        XXXXXXX,        KC_7,           KC_8,           KC_9,           KC_KP_PLUS,     _______,        
-    _______,        KC_PERC,        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_PIPE,        KC_VOLD,                        KC_MPLY,        XXXXXXX,        KC_4,           KC_5,           KC_6,           KC_KP_EQUAL,    _______,        
+    TO(0),          XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        KC_MUTE,                        KC_MNXT,        KC_CAPSLOCK,    KC_NUMLOCK,     KC_SLASH,       KC_ASTERISK,    KC_MINUS,       _______,        
+    _______,        KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         XXXXXXX,        KC_VOLU,                        KC_MPRV,        XXXXXXX,        KC_7,           KC_8,           KC_9,           KC_PLUS,        _______,        
+    _______,        KC_PERC,        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_PIPE,        KC_VOLD,                        KC_MPLY,        XXXXXXX,        KC_4,           KC_5,           KC_6,           KC_EQUAL,       _______,        
     _______,        KC_MINUS,       KC_UNDS,        KC_EQUAL,       KC_PLUS,        KC_BSLASH,                                                      XXXXXXX,        KC_1,           KC_2,           KC_3,           XXXXXXX,        _______,        
-    _______,        MC_KVM1,        MC_KVM2,        XXXXXXX,        XXXXXXX,                        _______,                        _______,                        KC_0,           KC_KP_DOT,      KC_KP_ENTER,    XXXXXXX,        _______,        
+    _______,        MC_KVM1,        MC_KVM2,        XXXXXXX,        XXXXXXX,                        _______,                        _______,                        KC_0,           KC_DOT,         KC_ENTER,       XXXXXXX,        _______,        
                                                                     _______,        _______,        _______,                        _______,        _______,        _______
   ),
   /*
