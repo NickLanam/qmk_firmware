@@ -30,14 +30,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_LBRACKET,                    KC_RBRACKET,    KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_EQUAL,       
     KC_BSPACE,      KC_A,           LSFT_T(KC_S),   LGUI_T(KC_D),   KC_F,           KC_G,           KC_LPRN,                        KC_RPRN,        KC_H,           KC_J,           RGUI_T(KC_K),   RSFT_T(KC_L),   KC_SCOLON,      KC_DELETE,      
     KC_LSHIFT,      LCTL_T(KC_Z),   KC_X,           KC_C,           KC_V,           KC_B,                                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         RCTL_T(KC_SLASH),KC_RSHIFT,      
-    KC_LCTRL,       KC_LGUI,        KC_LALT,        KC_F11,         LALT_T(KC_QUOTE),               TO(5),                          TO(4),                          LALT_T(KC_GRAVE),KC_F12,        KC_RALT,        KC_RGUI,        KC_RCTRL,       
+    KC_LCTRL,       KC_LGUI,        KC_LALT,        KC_F11,         LALT_T(KC_QUOTE),               TO(5),                          DM_PLY1,                        LALT_T(KC_GRAVE),KC_F12,        KC_RALT,        KC_RGUI,        KC_RCTRL,       
                                                                     LT(2,KC_SPACE), LT(3,KC_ENTER), TT(2),                          TT(3),          LT(3,KC_ENTER), LT(2,KC_SPACE)
   ),
   /*
    * Game layer: disables all dual-function behaviors, unmaps meta, enables one-shot hand swapping.
    */
   [LAYER_GAME] = LAYOUT_moonlander(
-    _______,        _______,        _______,        _______,        _______,        _______,        TO(0),                          TG(4),          _______,        _______,        _______,        _______,        _______,        _______,        
+    _______,        _______,        _______,        _______,        _______,        _______,        TO(0),                          TO(0),          _______,        _______,        _______,        _______,        _______,        _______,        
     _______,        _______,        _______,        _______,        _______,        _______,        SH_OFF,                         SH_OFF,         _______,        _______,        _______,        _______,        _______,        _______,        
     _______,        _______,        KC_S,           KC_D,           KC_F,           _______,        SH_OS,                          SH_OS,          _______,        KC_J,           KC_K,           KC_L,           _______,        _______,        
     _______,        KC_Z,           _______,        _______,        _______,        _______,                                                        _______,        _______,        _______,        _______,        KC_SLASH,       _______,        
@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,        KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         XXXXXXX,        KC_VOLU,                        KC_MPRV,        XXXXXXX,        KC_7,           KC_8,           KC_9,           KC_PLUS,        _______,        
     _______,        KC_PERC,        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_PIPE,        KC_VOLD,                        KC_MPLY,        XXXXXXX,        KC_4,           KC_5,           KC_6,           KC_EQUAL,       _______,        
     _______,        KC_MINUS,       KC_UNDS,        KC_EQUAL,       KC_PLUS,        KC_BSLASH,                                                      XXXXXXX,        KC_1,           KC_2,           KC_3,           XXXXXXX,        _______,        
-    _______,        MC_KVM1,        MC_KVM2,        XXXXXXX,        XXXXXXX,                        _______,                        _______,                        KC_0,           KC_DOT,         KC_ENTER,       XXXXXXX,        _______,        
+    _______,        MC_KVM1,        MC_KVM2,        XXXXXXX,        LALT_T(KC_QUOTE),               _______,                        _______,                        KC_0,           KC_DOT,         KC_ENTER,       XXXXXXX,        _______,        
                                                                     _______,        _______,        _______,                        _______,        _______,        _______
   ),
   /*
@@ -60,10 +60,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [LAYER_MOU_NAV] = LAYOUT_moonlander(
     TO(0),          KC_ACL0,        KC_ACL1,        KC_ACL2,        XXXXXXX,        XXXXXXX,        KC_MUTE,                        KC_MPRV,        KC_PAUSE,       KC_PSCREEN,     KC_INSERT,      KC_SCROLLLOCK,  _______,        _______,        
-    _______,        KC_WH_L,        KC_WH_D,        KC_WH_U,        KC_WH_R,        XXXXXXX,        KC_VOLU,                        KC_MNXT,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        _______,        _______,        
-    _______,        KC_MS_L,        KC_MS_D,        KC_MS_U,        KC_MS_R,        XXXXXXX,        KC_VOLD,                        KC_MPLY,        KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       _______,        _______,        
+    _______,        KC_WH_L,        KC_WH_U,        KC_WH_D,        KC_WH_R,        XXXXXXX,        KC_VOLU,                        KC_MNXT,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        _______,        _______,        
+    _______,        KC_MS_L,        KC_MS_U,        KC_MS_D,        KC_MS_R,        XXXXXXX,        KC_VOLD,                        KC_MPLY,        KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       _______,        _______,        
     _______,        KC_BTN1,        KC_BTN2,        KC_BTN3,        KC_BTN4,        KC_BTN5,                                                        KC_HOME,        KC_PGDOWN,      KC_PGUP,        KC_END,         _______,        _______,        
-    _______,        MC_KVM1,        MC_KVM2,        XXXXXXX,        XXXXXXX,                        _______,                        _______,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        _______,        _______,        
+    _______,        MC_KVM1,        MC_KVM2,        XXXXXXX,        LALT_T(KC_QUOTE),               _______,                        _______,                        LALT_T(KC_GRAVE),XXXXXXX,       XXXXXXX,        _______,        _______,        
                                                                     _______,        _______,        _______,                        _______,        _______,        _______
   ),
   /*
@@ -135,7 +135,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     BLACK, PURPLE, PURPLE, PURPLE,  PURPLE, BLACK,  NAVY,        NAVY,   BLACK,  BLUE,   BLUE,   BLUE,   PURPLE, BLACK,    
     BLACK, PURPLE, PURPLE, PURPLE,  PURPLE, PURPLE, NAVY,        NAVY,   BLACK,  BLUE,   BLUE,   BLUE,   PURPLE, BLACK,    
     BLACK, PURPLE, PURPLE, PURPLE,  PURPLE, PURPLE,                      BLACK,  BLUE,   BLUE,   BLUE,   BLACK,  BLACK,    
-    BLACK, ORANGE, ORANGE, BLACK,   BLACK,          BLACK,       BLACK,          BLUE,   PURPLE, PURPLE, BLACK,  BLACK,    
+    BLACK, ORANGE, ORANGE, BLACK,   WHITE,          BLACK,       BLACK,          BLUE,   PURPLE, PURPLE, BLACK,  BLACK,    
                                     PURPLE, LIME,   PURPLE,      LIME,   LIME,   PURPLE
   ),
 
@@ -144,7 +144,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     BLACK, GREEN,  GREEN,  GREEN,   GREEN,  BLACK,  NAVY,        NAVY,   BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
     BLACK, LIME,   LIME,   LIME,    LIME,   BLACK,  NAVY,        NAVY,   CYAN,   CYAN,   CYAN,   CYAN,   BLACK,  BLACK,
     BLACK, GREEN,  GREEN,  GREEN,   GREEN,  GREEN,                       CYAN,   CYAN,   CYAN,   CYAN,   BLACK,  BLACK,
-    BLACK, ORANGE, ORANGE, BLACK,   BLACK,          BLACK,       BLACK,          BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
+    BLACK, ORANGE, ORANGE, BLACK,   WHITE,          BLACK,       BLACK,          WHITE,  BLACK,  BLACK,  BLACK,  BLACK,
                                     PURPLE, LIME,   PURPLE,      LIME,   LIME,   PURPLE
   ),
 
