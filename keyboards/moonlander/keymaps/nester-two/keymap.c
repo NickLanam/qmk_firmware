@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_BSPACE,      KC_A,           LSFT_T(KC_S),   LGUI_T(KC_D),   KC_F,           KC_G,           KC_LPRN,                        KC_RPRN,        KC_H,           KC_J,           RGUI_T(KC_K),   RSFT_T(KC_L),   KC_SCOLON,      KC_DELETE,      
     KC_LSHIFT,      LCTL_T(KC_Z),   KC_X,           KC_C,           KC_V,           KC_B,                                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         RCTL_T(KC_SLASH),KC_RSHIFT,      
     KC_LCTRL,       KC_LGUI,        KC_LALT,        KC_F11,         LALT_T(KC_QUOTE),               TO(5),                          DM_PLY1,                        LALT_T(KC_GRAVE),KC_F12,        KC_RALT,        KC_RGUI,        KC_RCTRL,       
-                                                                    LT(2,KC_SPACE), LT(3,KC_ENTER), TT(2),                          TT(3),          LT(3,KC_ENTER), LT(2,KC_SPACE)
+                                                                    LT(2,KC_SPACE), LT(3,KC_ENTER), MO(2),                          MO(3),          LT(3,KC_ENTER), LT(2,KC_SPACE)
   ),
   /*
    * Game layer: disables all dual-function behaviors, unmaps meta, enables one-shot hand swapping.
@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,        _______,        KC_S,           KC_D,           KC_F,           _______,        SH_OS,                          SH_OS,          _______,        KC_J,           KC_K,           KC_L,           _______,        _______,        
     _______,        KC_Z,           _______,        _______,        _______,        _______,                                                        _______,        _______,        _______,        _______,        KC_SLASH,       _______,        
     _______,        XXXXXXX,        _______,        _______,        KC_LALT,                        TO(0),                          TO(0),                          KC_LALT,        _______,        _______,        XXXXXXX,        _______,        
-                                                                    KC_SPACE,       KC_ENTER,       MO(2),                          MO(3),          KC_ENTER,       KC_SPACE
+                                                                    KC_SPACE,       KC_ENTER,       _______,                        _______,        KC_ENTER,       KC_SPACE
   ),
   /*
    * Symbols on left hand, numbers on right hand
